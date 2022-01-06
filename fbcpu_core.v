@@ -57,65 +57,54 @@ always@(*) begin
             end
             
             2: begin
-                if(IR[9:6]<6)
-				{
-				MARNext= IR[5:0];
-				durumNext= 3;
-				}
-				else if(IR[9:6]==6)
-				{
-				PCNext= IR[5:0];
-				durumNext= 0;
-				}
-				else if(IR[9:6]==7)
-				{
-				if(ACC==0)
-				{
-					PCNext=IR[5:0]; 
-				}
-				durumNext= 0;
-				}
-				else if(IR[9:6]==8)
-				{
-				durumNext=0;
-				}
-				else if(IR[9:6]==8)
-				{
-				durumNext=4;
-				}
+                if(IR[9:6]<6)begin
+			MARNext= IR[5:0];
+			durumNext= 3;
+		end
+		else if(IR[9:6]==6)begin
+			PCNext= IR[5:0];
+			durumNext= 0;
+		end
+		else if(IR[9:6]==7)begin
+			if(ACC==0)begin
+				PCNext=IR[5:0]; 
+			end
+			durumNext= 0;
+		end
+		else if(IR[9:6]==8)begin
+			durumNext=0;
+		end
+		else if(IR[9:6]==8)begin
+			durumNext=4;
+		end
             end
             
             3: begin
-                durum=0;
-				RAMWr=0;
-				MAR=0;
-				if(IR[9:6]==0)
-				{
-				ACCNext=MDROut;
-				}
-				if(IR[9:6]==1)
-				{
-				MARNext=IR[5:0];
-				RAMWr=1;
-				MDRIn=ACC;
-				}
-				else if(IR[9:6]==2)
-				{
-				ACCNext=ACC+MDROut;
-				}
-				else if(IR[9:6]==3)
-				{
-				ACCNext=ACC-MDROut;
-				}
-				else if(IR[9:6]==4)
-				{
-				ACCNext=ACC*MDROut;
-				}
+		durum=0;
+		RAMWr=0;
+		MAR=0;
+		if(IR[9:6]==0)begin
+			ACCNext=MDROut;
+		end
+		if(IR[9:6]==1)begin
+			MARNext=IR[5:0];
+			RAMWr=1;
+			MDRIn=ACC;
+		end
+		else if(IR[9:6]==2)begin
+			ACCNext=ACC+MDROut;
+		end
+		else if(IR[9:6]==3)begin
+			ACCNext=ACC-MDROut;
+		end
+		else if(IR[9:6]==4)begin
+			ACCNext=ACC*MDROut;
+		end
             end
 			
             4: begin
-			PCNext=PC;
-			durumNext=4;
+		PCNext=PC;
+		durumNext=4;
             end
         endcase
     end
