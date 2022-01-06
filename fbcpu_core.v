@@ -74,7 +74,7 @@ always@(*) begin
 		else if(IR[9:6]==8)begin
 			durumNext=0;
 		end
-		else if(IR[9:6]==8)begin
+		    else if(IR[9:6]==9)begin
 			durumNext=4;
 		end
             end
