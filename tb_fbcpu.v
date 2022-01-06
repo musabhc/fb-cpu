@@ -62,7 +62,7 @@ module tb_fbcpu;
     task memCheck;
         input [31:0] memLocation, expectedValue;
         begin
-          if(blram.memory[memLocation] != expectedValue) begin
+            if(blram.memory[memLocation] !== expectedValue) begin
                 $display("Test Hatali Tamamlandi!");
           end else begin
                 $display("Test Basarili Tamamlandi!");
